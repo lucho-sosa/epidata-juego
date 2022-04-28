@@ -1,12 +1,8 @@
 package com.epidata.juego.comparator;
 
-public class ComparatorNombre implements Enfrentable{
+import com.epidata.juego.enfrentable.Enfrentable;
 
-	@Override
-	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+public class ComparatorNombre implements Comparador{
 
 	@Override
 	public int compare(Enfrentable e1, Enfrentable e2) {

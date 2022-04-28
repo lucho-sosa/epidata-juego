@@ -1,14 +1,10 @@
 package com.epidata.juego.comparator;
 
-public class ComparatorCriterioSimple implements Enfrentable {
+import com.epidata.juego.enfrentable.Enfrentable;
+
+public class ComparatorCriterioSimple implements Comparador {
 	
 	private String atributo;
-	
-	@Override
-	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int compare(Enfrentable e1, Enfrentable e2) {
@@ -20,5 +16,4 @@ public class ComparatorCriterioSimple implements Enfrentable {
 		super();
 		this.atributo = atributo;
 	}
-	
 }
