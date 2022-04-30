@@ -18,8 +18,9 @@ public class AtributoCondicional implements Atributo {
 
 	@Override
 	public float getValor(Enfrentable e) {
-		// TODO Auto-generated method stub
-		return 0;
+		float valor1 = e.getValorAtributo(key1);
+		float valor2 = e.getValorAtributo(key2);
+		return valor1 > valor2 ? keyThen.getValor(e) : keyElse.getValor(e);
 	}
 	
 }

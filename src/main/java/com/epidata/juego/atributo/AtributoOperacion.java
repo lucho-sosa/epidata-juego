@@ -18,8 +18,30 @@ public class AtributoOperacion implements Atributo {
 
 	@Override
 	public float getValor(Enfrentable e) {
-		// TODO Auto-generated method stub
-		return 0;
+		float valor = e.getValorAtributo(key1) * e.getValorAtributo(key2);
+		return valor;
 	}
+
+	public String getKey1() {
+		return key1;
+	}
+
+	public void setKey1(String key1) {
+		this.key1 = key1;
+	}
+
+	public String getKey2() {
+		return key2;
+	}
+
+	public void setKey2(String key2) {
+		this.key2 = key2;
+	}
+
+	@Override
+	public String toString() {
+		return "AtributoOperacion [key1=" + key1 + ", key2=" + key2 + "]";
+	}
+	
 	
 }

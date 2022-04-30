@@ -13,6 +13,7 @@ public class Personaje extends Enfrentable {
 //CONSTRUCTORS
 	public Personaje(String nombre, String nombreFantasia) {
 		super(nombre, nombreFantasia);
+		this.atributos = new HashMap<String, Atributo>();
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -27,7 +28,8 @@ public class Personaje extends Enfrentable {
 	}
 	
 	public float getValorAtributo(String key) {
-		return 0; //si no hay valor devolver por defecto
+		float valor = this.atributos.get(key).getValor(this);
+		return valor == 0 ?  0 : valor;
 	}
 	// En getPersonaje, debe retornar una lista consigo mismo.
 	protected ArrayList<Personaje> getPersonajes() {
@@ -37,7 +39,11 @@ public class Personaje extends Enfrentable {
 	}
 	
 	public boolean addAtributo(String k, Atributo A) {
-		return false;
+		if (k == "" || A == null) {
+			return false;
+		}
+		atributos.put(k, A);
+		return true;
 	}
 		
 }

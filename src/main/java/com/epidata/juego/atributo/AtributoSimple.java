@@ -12,8 +12,7 @@ public class AtributoSimple implements Atributo {
 	
 	@Override
 	public float getValor(Enfrentable e) {
-		// TODO Auto-generated method stub
-		return 0;
+		return value;
 	}
 	
 	public void setValor(float value) {

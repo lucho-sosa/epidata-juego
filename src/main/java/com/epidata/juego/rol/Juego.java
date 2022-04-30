@@ -1,9 +1,16 @@
 package com.epidata.juego.rol;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Map.Entry;
 
+import com.epidata.juego.atributo.Atributo;
+import com.epidata.juego.atributo.AtributoCondicional;
+import com.epidata.juego.atributo.AtributoOperacion;
+import com.epidata.juego.atributo.AtributoSimple;
 import com.epidata.juego.comparator.Comparador;
 import com.epidata.juego.enfrentable.*;
+import com.epidata.juego.errores.ExistAttrException;
 
 public class Juego 
 {
@@ -15,6 +22,7 @@ public class Juego
 	//MÉTODO FINALIZADO
 	public Juego() {
 		super();
+		enfrentables = new ArrayList<Enfrentable>();
 	}
 	//MÉTODO FINALIZADO
     public Juego(ArrayList<Enfrentable> enfrentables) {
@@ -64,37 +72,41 @@ public class Juego
     {
     	//instanciamos el juego
     	Juego juego = new Juego();
+    	System.out.println("se ha creado el juego");
+    	//crear los atributos
+    	//--simples
+    	AtributoSimple ataque = new AtributoSimple(10);
+    	AtributoSimple defensa = new AtributoSimple(10);
+    	AtributoSimple sabiduria = new AtributoSimple(10);
+    	AtributoSimple velocidad = new AtributoSimple(10);
+    	AtributoSimple agilidad = new AtributoSimple(15);
+    	AtributoSimple conocimiento = new AtributoSimple(10);
+    	//--Operacion
+    	AtributoOperacion vida = new AtributoOperacion("Defensa", "Velocidad");
+    	//--Condicional
+    	AtributoCondicional destreza = new AtributoCondicional("Velocidad", "Agilidad", velocidad, agilidad);
+    	
     	//creamos personajes
-    	Personaje lucho = new Personaje("Lucho", "Kurgan");
-    	Personaje amilcar = new Personaje("Amilcar", "kurgan");
-    	Personaje tomas = new Personaje("Tomas", "kurgan");
-    	Personaje carlos = new Personaje("Carlos", "kurgan");
     	Personaje claudia = new Personaje("Claudia", "kurgan");
+    	System.out.println("se ha creado el personaje Claudia");
+    	claudia.addAtributo("Ataque", ataque);
+    	claudia.addAtributo("Defensa", defensa);
+    	claudia.addAtributo("Velocidad", velocidad);
+    	claudia.addAtributo("Agilidad", agilidad);
+    	claudia.addAtributo("Vida", vida);
+    	claudia.addAtributo("Destreza", destreza);
+
     	//creamos ligas
     	Liga liga1 = new Liga("Liga 1", "Sosa");
     	Liga liga2 = new Liga("Liga 2", "Crespi");
     	Liga liga3 = new Liga("Liga 3", "Sosa2");
     	
-    	//creamos atributos para los personajes
-    	
-    	
     	//agreamos una liga y un personaje al juego
     	juego.addEnfrentable(claudia);
     	juego.addEnfrentable(liga1);
     	
-    	//agregamos un personaje y 2 ligas a una liga
-    	liga1.addIntegrante(lucho);
-    	liga1.addIntegrante(liga2);
-    	liga1.addIntegrante(liga3);
+    	claudia.getAtributos().forEach((k,v) -> System.out.println("Key: " + k + ": Value: " + v.getValor(claudia)));
     	
-    	//agreamos 2 personajes a una liga que esta dentro e liga1
-    	liga2.addIntegrante(tomas);
-    	liga2.addIntegrante(carlos);
-    	
-    	//agregamos un pesonaje a una liga que esta dentro de liga2
-    	liga3.addIntegrante(amilcar);
-    	 	
-    	//crear los atributos
-    	
+    	    	
     }
 }
