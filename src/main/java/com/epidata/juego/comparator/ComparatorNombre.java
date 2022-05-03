@@ -6,7 +6,6 @@ public class ComparatorNombre implements Comparador{
 
 	@Override
 	public int compare(Enfrentable e1, Enfrentable e2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return e1.getNombre().compareTo(e2.getNombre());
 	}
 }

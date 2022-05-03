@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Liga extends Enfrentable{
 //Attr
-	private ArrayList<Enfrentable> integrantes;
+	private ArrayList<Enfrentable> integrantes = new ArrayList<Enfrentable>();;
 	
 //CONSTRUCTORS
 	public Liga(String nombre, String nombreFantasia) {
@@ -21,6 +21,7 @@ public class Liga extends Enfrentable{
 
 //GETTERS AND SETTERS
 	public ArrayList<Enfrentable> getIntegrantes() {
+		
 		return integrantes;
 	}
 
@@ -31,12 +32,30 @@ public class Liga extends Enfrentable{
 //------------------
 	
 	public boolean addIntegrante(Enfrentable e) {
-		return false;
+		integrantes.add(e);
+		return true;
 	}
 	
 	public float getValorAtributo(String key) {
-		return 0.0f;
+		int cont = 0;
+		float acc = 0;
+		
+		for (Enfrentable elem: integrantes) {
+			float valor = elem.getValorAtributo(key);
+			if ( valor == 0f) {
+				continue;
+			}
+			cont++;
+			acc += valor;
+		}
+		
+		if (cont == 0) return 0.0f;
+		return acc / cont;
 	}
 
-
+	protected ArrayList<Personaje> getPesonajes(){
+		
+		return null;
+		
+	}
 }

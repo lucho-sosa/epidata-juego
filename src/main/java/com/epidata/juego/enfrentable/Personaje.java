@@ -31,7 +31,7 @@ public class Personaje extends Enfrentable {
 		float valor = this.atributos.get(key).getValor(this);
 		return valor == 0 ?  0 : valor;
 	}
-	// En getPersonaje, debe retornar una lista consigo mismo.
+//TODO: revisar si ese this esta bien colocado
 	protected ArrayList<Personaje> getPersonajes() {
 		ArrayList<Personaje> personaje = new ArrayList<Personaje>();
 		personaje.add(this);
